@@ -30,7 +30,8 @@ public final class UserServiceLogger {
 
 					System.out.println("[CONFIG] - Configuring Log4J to read from: " + loggerConfigFile);
 
-					DOMConfigurator.configure(loggerConfigFile);
+					DOMConfigurator.configure(UserServiceLogger.class.getClassLoader()
+							.getResource(loggerConfigFile));
 
 					final Logger logger = Logger.getLogger(UserServiceLogger.class);
 					logger.info("************************************************************************************");
