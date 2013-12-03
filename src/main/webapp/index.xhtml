@@ -1,0 +1,117 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>UMS Tool</title>
+    <link rel="stylesheet" type="text/css" href="./resources/css/typography.css" />
+    <link rel="stylesheet" type="text/css" href="./resources/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="./resources/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="./resources/css/telenav-header.css" />
+    <link rel="stylesheet" type="text/css" href="./resources/css/ui.all.css" />
+    <link rel="stylesheet" type="text/css" href="./resources/css/jquery.dataTables.css" />
+    <link rel="stylesheet" type="text/css" href="./resources/css/thickbox.css" />
+    <link rel="stylesheet" type="text/css" href="./resources/css/ui.all.css" />
+    <link rel="stylesheet" type="text/css" href="./resources/css/ui.admenu.css" />
+    <link href="./css/table-styles.css" rel="stylesheet" type="text/css" />
+</h:head>
+
+
+<h:body>
+    <div id="wrapper">
+        <div id="mainContent">
+
+
+
+            <div id="telenav-header-top_navigation">
+                <div class="telenav-logo">
+                    <a href="#"><img src="./resources/images/logo.png" alt="TeleNav Logo" id="telenav-logo" height="18px" border="0" /></a>
+                </div>
+            </div>
+
+
+
+            <div class="content">
+
+
+                <a name="fieldErrorsHref"></a>
+
+
+                <div class="error-msg-box errorWidth1" id="fieldErrors" style="display:none"></div>
+
+
+
+                <div class="seg">
+                    <div class="left"></div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="search-bar">
+
+                    <h:form>
+                        <div class="item-left" style="width:70px;">Search By:</div>
+                        <div class="item-left">
+                            <h:selectOneMenu value="#{userSearch.keyWordType}">
+                                <f:selectItems value="#{userSearch.availableKeyWordTypes}" />
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="item-left">
+                            <h:inputText value="#{userSearch.keyWord}" style="width:200px;" />
+                        </div>
+                        <h:commandButton styleClass="search" value="search" action="#{userSearch.searchUser}" />
+                    </h:form>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="top-page-div">
+                    <div id="act_list_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="top"></div>
+
+
+
+                        <h:dataTable var="programmer" value="#{company1.programmers}" cellspacing="1" cellpadding="0" styleClass="common-table dataTable"
+                            rowClasses="even,odd">
+                            <f:facet name="caption">Programmers at #{company1.companyName}</f:facet>
+                            <h:column>
+                                <f:facet name="header">First Name</f:facet>
+    #{programmer.firstName}
+  </h:column>
+                            <h:column>
+                                <f:facet name="header">Last Name</f:facet>
+    #{programmer.lastName}
+  </h:column>
+                            <h:column>
+                                <f:facet name="header">Experience Level</f:facet>
+    #{programmer.level}
+  </h:column>
+                            <h:column>
+                                <f:facet name="header">Languages</f:facet>
+    #{programmer.languageList}
+  </h:column>
+                        </h:dataTable>
+
+
+                        <br></br>  <br></br>
+
+
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Footer -->
+        <div id="footer">
+            <ul>
+                <li>© 2013 TeleNav, Inc. All rights reserved.</li>
+            </ul>
+        </div>
+
+        <!-- end of footer -->
+    </div>
+
+</h:body>
+</html>

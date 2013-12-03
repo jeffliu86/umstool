@@ -1,0 +1,184 @@
+/* CSS Document */
+
+/*the general css of websites*/
+html, body, div, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-family: Arial, Tahoma, Verdana;
+	font-family:Arial, Tahoma, Verdana;
+}
+strong{font-weight:bold;}
+
+
+body{
+	margin:0;
+	padding:0;
+	background-color:#efeff4;
+	color:#000;
+	font-family:Arial, Tahoma, Verdana;
+	font-size: 12px;
+	position: relative;
+	line-height:130%;
+}
+textarea,input,select{font-size:12px; font-family:Arial, Helvetica, sans-serif;margin:0;}
+li{list-style:none;}
+label{text-align:left;}
+ul, menu, dir {
+list-style-type:disc;
+}
+.img{padding:1px;border:solid 1px #ccc;}
+ol {
+padding-left:40px;
+}
+ol, ul {
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
+}
+
+
+
+h1{font-size:22px;padding-bottom:5px;color:#1c5285;font-weight:bold;}
+h2{font-size:18px;font-weight:bold;margin-bottom:20px;font-style:italic;color:#1c5285}
+h3{ background:url(../images/arrow.jpg) no-repeat;padding-left:13px;color:#333;font-weight:bold;font-size:15px;margin-bottom:10px;color:#1c5285}
+h4{color:#333;font-weight:bold;font-size:14px;text-align:left;padding:8px 0 5px 0;}
+h5{color:#fff;font-weight:700;font-size:13px;text-align:left;}
+h6{color:#333;font-weight:bold; font-size:16px; text-align:left; padding:8px 0;}
+p{margin:0;line-height:18px;}
+
+
+a{color:#105cb6;text-decoration:none;font-size:12px;cursor:pointer;*cursor:hand}
+a:hover{text-decoration:none;}
+a:visited{color:#105cb6;}
+
+/*header user operations,just like login or logout and help request */
+.pacing{padding:0 10px;}
+.pacing2{padding:8px 0;}
+.paccing3{padding-top:4px;}
+.pacing4{padding-top:6px;}
+.pacing5{*padding-bottom:30px;}
+.pacing6{padding-top:6px;float:left;margin-left:5px;}
+.pacing7{padding-top:2px;}
+.padding8{padding-bottom:3px;padding-top:8px;}
+.padding9{margin-right:5px;}
+.spacing-top{padding-top:3px;}
+.spacing2{margin-top:15px;}
+.spacing{margin:8px 0 16px 0;}
+.padding{padding:15px 8px 0 10px; text-align:left;}
+.log{padding-left:15px;}
+.del{position:absolute;right:10px;top:3px;}
+
+.clear{clear:both;}
+.left{float:left;}
+.right{float:right;}
+.center{text-align:center;}
+.small{font-size:11px;}
+.border{border:solid 1px #ccc;margin-top:5px;}
+.bot-margin{margin-bottom:5px;background-color:#000;}
+.left-align{text-align:left;}
+.right-align{text-align:right;}
+.photo-table{margin-left:60px;}
+.title-pacing{padding-left:8px;padding-top:6px;}
+.fontStyle{font-size:13px; text-align:left;margin-left:10px;}
+
+.right-pacing{margin-right:10px;}
+.high-pacing{margin-top:20px;}
+.post-pacing{margin:10px 5px 0 30px;}
+.add-pacing{margin:0px 10px 0px 0;}
+.li-link-padding{padding-top:15px; text-align:left}
+.post-height{height:433px;}
+
+.pinPacing{padding-left:15px;*padding-top:3px;}
+.font-pacing{padding-left:3px;}
+
+.select-mobile{width:90px;}
+.genelpad{padding-top:30px;*margin-bottom:20px;}
+.disable-font{color:#cac8bb;}
+.check-pot{padding-top:3px;}
+.text-width{width:583px;}
+.left-spacing{margin-left:30px;;*margin-left:10px;}
+.pacing-bot{margin-bottom:15px;}
+.pacing_b{margin-bottom:0;*margin-bottom:15px;}
+.bt10PXpacing{margin-bottom:10px;}
+.bt20PXpacing{margin-bottom:20px;}
+.bt30PXpacing{margin-bottom:30px;}
+.bt50PXpacing{margin-bottom:50px;}
+.bTop20PXpacing{margin-top:20px;}
+.bTop60PXpacing{margin-top:100px;}
+.top-spa{margin-top:10px;}
+.pacing-bot2{margin-bottom:10px;}
+.penMargin{margin-left:15px;}
+
+/*input width and height defination*/
+.inputShort{width:120px;}
+.inputMiddle{width:190px;}
+.inputMiddle_two{width:250px;}
+.inputLong{width:300px;}
+.inputLonger{width:365px;}
+.selectLong{width:305px;}
+.selectMiddle{width:255px;}
+.inputLongerr{width:528px;}
+.inputShorter{width:70px;}
+.selectShort{width:75px;}
+.selectShort option{width:50px;}
+.streetLong{width:370px;}
+.cardLong{width:220px;}
+
+/*font defination*/
+.fontRED{color:#FF0000;}
+.font11PX{font-size:11px;}
+.fontGrey{color:#999;}
+.fontItaly{font-size:11px;font-style:italic;color:#666;font-weight:bold;margin-right:5px}
+
+/*position-relative*/
+.position{position:relative;}
+
+/* btn padding*/
+.padding40PXleft{padding-left:40px;}
+.padding175PXleft{padding-left:175px;}
+.padding10PXleft{padding-left:10px;}
+.padding212PXleft{padding-left:212px;}
+.padding20PXleft{padding-left:20px;}
+.padding135PXleft{padding-left:135px;}
+.padding30PXleft{padding-left:30px;}
+.padding15PXleft{padding-left:15px;}
+.padding127PXleft{padding-left:127px;}
+
+.btnPacing{padding-top:5px;*padding-top:30px;padding-left:193px;*padding-left:190px;}
+
+.btnActivate{padding-bottom:20px;padding-left:5px;text-align:left;}
+
+.figure_b{width:200px;border-bottom:solid 1px #ccc;padding-left:6px;border-right:solid 1px #ccc;}
+.border_b{border-bottom:solid 1px #ccc}
+.border_p{border-bottom:solid 1px #ccc;padding-left:6px}
+
+.font15PX{font-size:15px;margin-bottom:5px;font-weight:bold;}
+.font17PX{font-size:17px;font-weight:bold;color:#1C5285;}
+.width260PX{width:260px;}
+.width520PX{width:520px;}
+.numberWidth{width:100px;}
+.inputLong_two{width:530px;}
+.inputLongererr{width:525px;}
+.left10PXpadding{padding-left:10px;}
+.bizTipUp{float:left;width:420px;}
+.bizNoteUp{float:left;width:150px;color:#999;}
+.bakColor{background-color:#fbfbf8;border:solid 1px #d6d6d6;}
+
+
+
+/*added by jww in july,2010.*/
+.parent_adPacing{margin-bottom:15px;padding:5px;}
+.colMargin{margin-left:40px;}
+.padding5PXleft{padding-left:5px;}
+.menuMargin{margin:15px 0 15px 20px;}
