@@ -26,7 +26,7 @@ public final class UserServiceLogger {
 
 				if (!currentConfigVersion.equals(loggerConfigVersion)) {
 
-					loggerConfigFile = SystemProperty.getConfigUrl() + LOGGER_CONFIG.getString(KEY_USER_SERVICE_LOGGER_CONFIG_FILE);
+					loggerConfigFile = LOGGER_CONFIG.getString(KEY_USER_SERVICE_LOGGER_CONFIG_FILE);
 
 					System.out.println("[CONFIG] - Configuring Log4J to read from: " + loggerConfigFile);
 
