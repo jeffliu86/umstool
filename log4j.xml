@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC
+  "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration debug="true" xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	<!--**************************************************************-->
+	<!-- Appenders -->
+	<!--**************************************************************-->
+	<appender name="APICALLLOG" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/tnuser/logs/UserService/app.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss.SSS}] [%t] [%-5p] - %m%n%n" />
+		</layout>
+	</appender>
+	<appender name="USERLOG" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/tnuser/logs/UserService/app.debug.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss.SSS}] [%t] [%-5p] - %m%n%n" />
+		</layout>
+	</appender>
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="debug" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss.SSS}] [%t] [%-5p] - %m%n%n" />
+		</layout>
+	</appender>
+
+	<!--**************************************************************-->
+	<!-- Loggers -->
+	<!--**************************************************************-->
+	<logger name="com.telenav" additivity="false">
+		<level value="ALL" />
+		<appender-ref ref="USERLOG" />
+	</logger>
+	<logger name="APICALL" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="APICALLLOG" />
+	</logger>
+	<root>
+		<level value="ERROR" />
+	</root>
+</log4j:configuration>

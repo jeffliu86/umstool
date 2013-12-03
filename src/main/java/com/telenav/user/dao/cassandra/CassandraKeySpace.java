@@ -13,7 +13,6 @@ import com.netflix.astyanax.model.ConsistencyLevel;
 import com.netflix.astyanax.thrift.ThriftFamilyFactory;
 import com.telenav.user.commons.Configuration;
 import com.telenav.user.commons.ConfigurationFile;
-import com.telenav.user.commons.SystemProperty;
 import com.telenav.user.commons.UserServiceLogger;
 
 public enum CassandraKeySpace {
@@ -82,7 +81,7 @@ public enum CassandraKeySpace {
 					connPool.setPort(port);
 					connPool.setMaxConnsPerHost(maxConnsPerHost);
 					connPool.setSeeds(seeds);
-					connPool.setLocalDatacenter(SystemProperty.getDatacenter());
+					//connPool.setLocalDatacenter(SystemProperty.getDatacenter());
 					connPool.setLatencyScoreStrategy(new SmaLatencyScoreStrategyImpl(10000, 10000, 100, 2)); //TODO: tuning
 					// 	The constructor takes:
 					//  UpdateInterval: 10000 : Will resort hosts per token partition every 10 seconds

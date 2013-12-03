@@ -34,7 +34,7 @@ public class Configuration extends UserObject {
 
 		try {
 			final String configName = component.getConfigId() + ".properties";
-			final String userConfigUrl = SystemProperty.getConfigUrl() + configName;
+			final String userConfigUrl = configName;
 			final PropertiesConfiguration propConfig = new PropertiesConfiguration(userConfigUrl);
 
 			System.out.println("[CONFIG] - Loading Configuration: " + propConfig.getURL());
@@ -42,7 +42,7 @@ public class Configuration extends UserObject {
 			final ReloadingStrategy reloadingStrategy;
 			{
 				final FileChangedReloadingStrategy fileChangedReloadingStrategy = new FileChangedReloadingStrategy();
-				fileChangedReloadingStrategy.setRefreshDelay(SystemProperty.getConfigRefreshDelay());
+				fileChangedReloadingStrategy.setRefreshDelay(5000);
 				reloadingStrategy = fileChangedReloadingStrategy;
 			}
 			propConfig.setReloadingStrategy(reloadingStrategy);
