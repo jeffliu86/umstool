@@ -1,0 +1,19 @@
+.admenu-list {width: 100%;border-collapse:collapse;}
+.admenu-list th, .admenu-list td{padding: 0px;text-align: center;}
+.admenu-list th.menu-column,th.price-column{border:1px solid #000;background-color: #ccc;font-weight: 700;}
+.admenu-list td.menu-column,td.price-column{border:1px solid #666;}
+.menu-column{width:293px;}
+.price-column{width:84px;}
+.process-column{background-color:#fff;}
+.header-list{height:19px;}
+.section-order{margin-top:5px;}
+.section-order a:visited{background-color:#fff;}
+.section-order a:hover{background-color:#d5d5d5;}
+.section-order .up-section{float:left;padding:0px 12px 24px 12px;background: url('../images/arrow_up.png') no-repeat;}
+.section-order .down-section{float:left;padding:0px 12px 24px 12px;background: url('../images/arrow_down.png') no-repeat;}
+.section-operate a{float:left;	width:40px;	text-align:center;}
+.section-header .title{float:left;padding-right:10px;margin-left:3px;font-weight: bold;}
+.section-header .header-input{float:left;width:299px;}
+.section-order {width:25px;float:left;}
+.section-body{width:420px;float:left;padding:5px 0px 35px 0px;}
+.section-body input{width:100%;text-align:center;border-width:0px;}

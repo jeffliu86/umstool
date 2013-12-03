@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+#telenav-header-top_navigation {
+	/*background-image:
+		url(../images/telenav-header-top_navigation-970x80.png);	
+	background-attachment: scroll;
+	background-position: top left;
+	background-repeat: no-repeat;*/
+	background-color:black;
+	margin: 5px auto 8px auto;
+	width: 970px;
+	padding: 0 2px 1px 4px;
+	height: 45px;
+	position: relative;
+	right: 1px;
+	font-size: .98em;
+}
+
+#telenav-header-top_navigation div.telenav-logo {
+	position: absolute;
+	width: 152px;
+	height: 71px;
+	left: 5px;
+	top: 3px;
+}
+
+#telenav-header-top_navigation div.telenav-logo #telenav-logo {
+	padding: 15px 10px 20px 10px;
+	margin: 0;
+}
+
+#telenav-header-top_navigation div.international {
+	text-align: right;
+	width: 690px;
+	position: absolute;
+	left: 160px;
+	top: 3px;
+	margin: 12px 0;
+}
+
+#telenav-header-top_navigation div.international form {
+	margin: 0;
+	padding: 0;
+}
+
+#telenav-header-top_navigation div.international select {
+	padding: 0;
+	margin: 0;
+	float: right;
+}
+
+#telenav-header-top_navigation div.navigation {
+	width: 650px;
+	height: 32px;
+	position: absolute;
+	left: 143px;
+	top: 42px;
+	overflow: hidden;
+}
+
+#telenav-header-top_navigation div.navigation ul.navigation {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	height: 32px;
+}
+
+#telenav-header-top_navigation div.navigation li {
+	float: left;
+	display: inline;
+}
+
+#telenav-header-top_navigation div.navigation ul.navigation li a {
+	color: #ffffff;
+	text-decoration: none;
+	padding: 11px 14px 9px;
+	font-size: 100%;
+	line-height: 100%;
+	display: block;
+	position: relative;
+}
+
+#telenav-header-top_navigation div.navigation ul.navigation #first a {
+	padding: 11px 14px 9px 44px;
+}
+
+#telenav-header-top_navigation div.navigation ul.navigation li a:hover,#telenav-header-top_navigation div.navigation ul.navigation li.navcurrent
+	{
+	background: url(../images/telenav-header-top_navigation-over-715x32.png)
+		-32px 0px;
+}
+
+#telenav-header-top_navigation div.navigation ul.navigation #first a:hover,#telenav-header-top_navigation div.navigation ul.navigation li.firstCurrent
+	{
+	background: url(../images/telenav-header-top_navigation-over-715x32.png)
+		left top;
+}
+
+#telenav-header-top_navigation div.navigation ul.navigation li.firstCurrent a:hover,#telenav-header-top_navigation div.navigation ul.navigation li.navcurrent a:hover
+	{
+	background: transparent;
+}
