@@ -50,14 +50,14 @@
                     <h:form>
                         <div class="item-left" style="width:70px;">Search By:</div>
                         <div class="item-left">
-                            <h:selectOneMenu value="#{userSearch.keyWordType}">
-                                <f:selectItems value="#{userSearch.availableKeyWordTypes}" />
+                            <h:selectOneMenu value="#{userSearcher.keyWordType}">
+                                <f:selectItems value="#{userSearcher.availableKeyWordTypes}" />
                             </h:selectOneMenu>
                         </div>
                         <div class="item-left">
-                            <h:inputText value="#{userSearch.keyWord}" style="width:200px;" />
+                            <h:inputText value="#{userSearcher.keyWord}" style="width:200px;" />
                         </div>
-                        <h:commandButton styleClass="search" value="search" action="#{userSearch.searchUser}" />
+                        <h:commandButton styleClass="search" value="search" action="#{userSearcher.searchUser}" />
                     </h:form>
 
                     <div class="clear"></div>
@@ -69,32 +69,65 @@
 
 
 
-                        <h:dataTable var="programmer" value="#{company1.programmers}" cellspacing="1" cellpadding="0" styleClass="common-table dataTable"
+                        <h:dataTable var="roUserRegistrationData" value="#{userSearcher.result.roUserRegistrationData}" cellspacing="1" cellpadding="0" styleClass="common-table dataTable"
                             rowClasses="even,odd">
-                            <f:facet name="caption">Programmers at #{company1.companyName}</f:facet>
+                            <f:facet name="caption">roUserRegistrationData</f:facet>
                             <h:column>
-                                <f:facet name="header">First Name</f:facet>
-    #{programmer.firstName}
-  </h:column>
+                                <f:facet name="header">ApplicationId</f:facet>
+                                 #{roUserRegistrationData.applicationId}
+                            </h:column>
+                          <h:column>
+                                <f:facet name="header">DeviceInfo</f:facet> 
+                             #{roUserRegistrationData.deviceInfo}
+                                 </h:column>
                             <h:column>
-                                <f:facet name="header">Last Name</f:facet>
-    #{programmer.lastName}
-  </h:column>
-                            <h:column>
-                                <f:facet name="header">Experience Level</f:facet>
-    #{programmer.level}
-  </h:column>
-                            <h:column>
-                                <f:facet name="header">Languages</f:facet>
-    #{programmer.languageList}
-  </h:column>
+                                <f:facet name="header">FirstName</f:facet> 
+                               #{roUserRegistrationData.firstName}
+                                 </h:column>
+                              <h:column>
+                                <f:facet name="header">LastName</f:facet> 
+                               #{roUserRegistrationData.lastName}
+                                 </h:column>
                         </h:dataTable>
 
 
                         <br></br>  <br></br>
+                        <h:dataTable var="roItemMark" value="#{userSearcher.result.roItemMark}" cellspacing="1" cellpadding="0" styleClass="common-table dataTable"
+                            rowClasses="even,odd">
+                            <f:facet name="caption">roItemMark</f:facet>
+                            <h:column>
+                                <f:facet name="header">markerId</f:facet>
+                                 #{roItemMark.markerId}
+                            </h:column>
+                        </h:dataTable>
 
-
-
+                        <br></br>  <br></br>
+                        <h:dataTable var="roUserProfile" value="#{userSearcher.result.roUserProfiles}" cellspacing="1" cellpadding="0" styleClass="common-table dataTable"
+                            rowClasses="even,odd">
+                            <f:facet name="caption">roUserProfiles</f:facet>
+                            <h:column>
+                                <f:facet name="header">userId</f:facet>
+                                 #{roUserProfile.userId}
+                            </h:column>
+                              <h:column>
+                                <f:facet name="header">profileKey</f:facet>
+                                 #{roUserProfile.profileKey}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">profileValue</f:facet>
+                                 #{roUserProfile.profileValue}
+                            </h:column>
+                           <h:column>
+                                <f:facet name="header">modifiedTimestamp</f:facet>
+                                 #{roUserProfile.modifiedTimestamp}
+                            </h:column>
+                        <h:column>
+                                <f:facet name="header">toString</f:facet>
+                                 #{roUserProfile}
+                            </h:column>
+                            
+                        </h:dataTable>
+                        
                         <div class="clear"></div>
                     </div>
                 </div>
