@@ -2,6 +2,7 @@ package com.telenav.user.resource;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 import com.telenav.user.commons.ResponseCode;
 import com.telenav.user.commons.UserDataObject;
@@ -37,6 +38,8 @@ public class RoUserItem extends SyncableResourceObject {
 	//	private RoUserItem(final UserJsonObject jsonObj) {
 	//		super(jsonObj);
 	//	}
+	
+
 
 	public String getSyncId() {
 		return getItemId();
@@ -141,6 +144,17 @@ public class RoUserItem extends SyncableResourceObject {
 		}
 		return returnValue;
 	}
+	
+	public String getAllMarksName(){
+		String results="";
+		for ( RoItemMark each: getSystemMarks()) {
+			results+=each.getMarkerId()+", ";
+		}
+		for ( RoItemMark each: getUserMarks()) {
+			results+=each.getMarkerId()+", ";
+		}
+		return results;
+	}
 
 	public void updateUserMarks(final Collection<RoItemMark> marks) {
 
@@ -171,7 +185,7 @@ public class RoUserItem extends SyncableResourceObject {
 		return returnValue;
 	}
 
-	public Boolean isDeleted() {
+	public Boolean getIsDeleted() {
 		return getAttributeAsBoolean(KEY_IS_DELETED);
 	}
 

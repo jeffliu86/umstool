@@ -1,9 +1,10 @@
 /**
  * 
  */
-package com.telenav.user.search;
+package com.telenav.user.tool.service;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  * @author [Liu Jie]
@@ -12,7 +13,8 @@ import javax.faces.bean.ManagedBean;
  * $LastChangedRevision$
  * $LastChangedBy$
  */
-@ManagedBean 
+@ManagedBean
+@RequestScoped
 public class UserSearcher {
 
     private static String[] availableKeyWordTypes =
@@ -53,14 +55,6 @@ public class UserSearcher {
 
     public  String searchUser() {
         this.result = service.searchUser(keyWord);
-        //this.user =  UserSearchService.getInstance().search(keyWord, keyWordType);
-//        this.user = new User();
-//        user.setEmail("abc@gmail.com");
-//        user.setUserName("niko");
-//        
-//        this.userCredential = new UserCredential();
-//        userCredential.setCredentialType("EMAIL-PASSWORD");
-//        userCredential.setCredentialValue("aaa@gmail.com");
         return "index";
     }
 

@@ -1,150 +1,309 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>UMS Tool</title>
-    <link rel="stylesheet" type="text/css" href="./resources/css/typography.css" />
-    <link rel="stylesheet" type="text/css" href="./resources/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="./resources/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="./resources/css/telenav-header.css" />
-    <link rel="stylesheet" type="text/css" href="./resources/css/ui.all.css" />
-    <link rel="stylesheet" type="text/css" href="./resources/css/jquery.dataTables.css" />
-    <link rel="stylesheet" type="text/css" href="./resources/css/thickbox.css" />
-    <link rel="stylesheet" type="text/css" href="./resources/css/ui.all.css" />
-    <link rel="stylesheet" type="text/css" href="./resources/css/ui.admenu.css" />
-    <link href="./css/table-styles.css" rel="stylesheet" type="text/css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UMS Tool</title>
+	<link rel="stylesheet" type="text/css"
+		href="./resources/css/typography.css" />
+	<link rel="stylesheet" type="text/css"
+		href="./resources/css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="./resources/css/main.css" />
+	<link rel="stylesheet" type="text/css"
+		href="./resources/css/telenav-header.css" />
+	<link rel="stylesheet" type="text/css"
+		href="./resources/css/ui.all.css" />
+	<link rel="stylesheet" type="text/css"
+		href="./resources/css/jquery.dataTables.css" />
+	<link rel="stylesheet" type="text/css"
+		href="./resources/css/thickbox.css" />
+	<link rel="stylesheet" type="text/css"
+		href="./resources/css/ui.all.css" />
+	<link rel="stylesheet" type="text/css"
+		href="./resources/css/ui.admenu.css" />
+	<link href="./css/table-styles.css" rel="stylesheet" type="text/css" />
 </h:head>
 
 
 <h:body>
-    <div id="wrapper">
-        <div id="mainContent">
+	<div id="wrapper">
+		<div id="mainContent">
 
 
 
-            <div id="telenav-header-top_navigation">
-                <div class="telenav-logo">
-                    <a href="#"><img src="./resources/images/logo.png" alt="TeleNav Logo" id="telenav-logo" height="18px" border="0" /></a>
-                </div>
-            </div>
+			<div id="telenav-header-top_navigation">
+				<div class="telenav-logo">
+					<a href="#"><img src="./resources/images/logo.png"
+						alt="TeleNav Logo" id="telenav-logo" height="18px" border="0" /></a>
+				</div>
+			</div>
 
 
 
-            <div class="content">
+			<div class="content">
 
 
-                <a name="fieldErrorsHref"></a>
-
-
-                <div class="error-msg-box errorWidth1" id="fieldErrors" style="display:none"></div>
-
-
-
-                <div class="seg">
-                    <div class="left"></div>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="search-bar">
-
-                    <h:form>
-                        <div class="item-left" style="width:70px;">Search By:</div>
-                        <div class="item-left">
-                            <h:selectOneMenu value="#{userSearcher.keyWordType}">
-                                <f:selectItems value="#{userSearcher.availableKeyWordTypes}" />
-                            </h:selectOneMenu>
-                        </div>
-                        <div class="item-left">
-                            <h:inputText value="#{userSearcher.keyWord}" style="width:200px;" />
-                        </div>
-                        <h:commandButton styleClass="search" value="search" action="#{userSearcher.searchUser}" />
-                    </h:form>
-
-                    <div class="clear"></div>
-                </div>
-
-                <div class="top-page-div">
-                    <div id="act_list_wrapper" class="dataTables_wrapper" role="grid">
-                        <div class="top"></div>
+				<div class="error-msg-box errorWidth1" id="fieldErrors"
+					style="display: none"></div>
 
 
 
-                        <h:dataTable var="roUserRegistrationData" value="#{userSearcher.result.roUserRegistrationData}" cellspacing="1" cellpadding="0" styleClass="common-table dataTable"
-                            rowClasses="even,odd">
-                            <f:facet name="caption">roUserRegistrationData</f:facet>
-                            <h:column>
-                                <f:facet name="header">ApplicationId</f:facet>
-                                 #{roUserRegistrationData.applicationId}
-                            </h:column>
-                          <h:column>
-                                <f:facet name="header">DeviceInfo</f:facet> 
-                             #{roUserRegistrationData.deviceInfo}
-                                 </h:column>
-                            <h:column>
-                                <f:facet name="header">FirstName</f:facet> 
-                               #{roUserRegistrationData.firstName}
-                                 </h:column>
-                              <h:column>
-                                <f:facet name="header">LastName</f:facet> 
-                               #{roUserRegistrationData.lastName}
-                                 </h:column>
-                        </h:dataTable>
+				<div class="seg">
+					<div class="left"></div>
+					<div class="clear"></div>
+				</div>
 
+				<div class="search-bar">
 
-                        <br></br>  <br></br>
-                        <h:dataTable var="roItemMark" value="#{userSearcher.result.roItemMark}" cellspacing="1" cellpadding="0" styleClass="common-table dataTable"
-                            rowClasses="even,odd">
-                            <f:facet name="caption">roItemMark</f:facet>
-                            <h:column>
-                                <f:facet name="header">markerId</f:facet>
-                                 #{roItemMark.markerId}
-                            </h:column>
-                        </h:dataTable>
+					<h:form>
+						<div class="item-left" style="width: 70px;">Search By:</div>
+						<div class="item-left">
+							<h:selectOneMenu value="#{userSearcher.keyWordType}">
+								<f:selectItems value="#{userSearcher.availableKeyWordTypes}" />
+							</h:selectOneMenu>
+						</div>
+						<div class="item-left">
+							<h:inputText value="#{userSearcher.keyWord}" style="width:200px;" />
+						</div>
+						<h:commandButton styleClass="search" value="search"
+							action="#{userSearcher.searchUser}" />
+					</h:form>
 
-                        <br></br>  <br></br>
-                        <h:dataTable var="roUserProfile" value="#{userSearcher.result.roUserProfiles}" cellspacing="1" cellpadding="0" styleClass="common-table dataTable"
-                            rowClasses="even,odd">
-                            <f:facet name="caption">roUserProfiles</f:facet>
-                            <h:column>
-                                <f:facet name="header">userId</f:facet>
-                                 #{roUserProfile.userId}
-                            </h:column>
-                              <h:column>
-                                <f:facet name="header">profileKey</f:facet>
-                                 #{roUserProfile.profileKey}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">profileValue</f:facet>
-                                 #{roUserProfile.profileValue}
-                            </h:column>
-                           <h:column>
-                                <f:facet name="header">modifiedTimestamp</f:facet>
-                                 #{roUserProfile.modifiedTimestamp}
-                            </h:column>
-                        <h:column>
-                                <f:facet name="header">toString</f:facet>
-                                 #{roUserProfile}
-                            </h:column>
-                            
-                        </h:dataTable>
-                        
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
+					<div class="clear"></div>
+				</div>
 
-        </div>
+				<div class="top-page-div">
+					<div id="act_list_wrapper" class="dataTables_wrapper" role="grid">
+						<div class="top"></div>
+						
+						<label>Sample key: 8QGE4S4RRJQ13MPJ3U7P335LV</label>
+						
+						<br></br>
+						<h:outputText value="#{userSearcher.keyWord}"
+									rendered="#{not empty userSearcher.keyWord}" />
+						<br></br>
+						<p:dataTable var="user" value="#{userSearcher.result.roUserRegistrationData}">
+							<f:facet name="header">  
+            					User Account
+        					</f:facet>
+        					<p:column headerText="First Name">
+								<h:outputText value="#{user.firstName}" />
+							</p:column>
+							<p:column headerText="Last Name">
+								<h:outputText value="#{user.lastName}" />
+							</p:column>
+							
+							<p:column headerText="isLegacyUser">
+								<h:outputText value="#{userSearcher.result.roUserMigrationState.isLegacyUser}" />
+							</p:column>
+							<p:column headerText="Legacy userId">
+								<h:outputText value="#{userSearcher.result.roUserMigrationState.legacyUserId}" />
+							</p:column>
+							
+							<p:column headerText="Register Timestamp">
+								<h:outputText value="#{user.registeredTimestamp}" />
+							</p:column>
+        					
+							<p:column headerText="Registration Info JSON String">
+								<h:outputText value="#{user}" />
+							</p:column>
+							
+							<p:column headerText="MigrationState Info JSON String">
+								<h:outputText value="#{userSearcher.result.roUserMigrationState}" />
+							</p:column>
 
+						</p:dataTable>
+						
+						<br></br> <br></br>
+						<p:dataTable var="profiles" value="#{userSearcher.result.roUserProfiles}">
+							<f:facet name="header">  
+            					User Profiles
+        					</f:facet>
+							<p:column headerText="Key">
+								<h:outputText value="#{profiles.profileKey}" />
+							</p:column>
+							
+							<p:column headerText="Value">
+								<h:outputText value="#{profiles.profileValue}" />
+							</p:column>
 
-        <!-- Footer -->
-        <div id="footer">
-            <ul>
-                <li>© 2013 TeleNav, Inc. All rights reserved.</li>
-            </ul>
-        </div>
+							<p:column headerText="JSON String">
+								<h:outputText value="#{profiles}" />
+							</p:column>
 
-        <!-- end of footer -->
-    </div>
+						</p:dataTable>
+						
+						<br></br> <br></br>
+						<p:dataTable var="credentials" value="#{userSearcher.result.roUserCredentials}">
+							<f:facet name="header">  
+            					User Credential
+        					</f:facet>
+							<p:column headerText="Type">
+								<h:outputText value="#{credentials.type}" />
+							</p:column>
+							
+							<p:column headerText="Key">
+								<h:outputText value="#{credentials.key}" />
+							</p:column>
+
+							<p:column headerText="JSON String">
+								<h:outputText value="#{credentials}" />
+							</p:column>
+
+						</p:dataTable>
+						
+						<br></br> <br></br>
+						<p:dataTable var="markers" value="#{userSearcher.result.roMarkers}">
+							<f:facet name="header">  
+            					Markers
+        					</f:facet>
+
+							<p:column headerText="Label">
+								<h:outputText value="#{markers.label}" />
+							</p:column>
+							
+							<p:column headerText="Mark Id">
+								<h:outputText value="#{markers.markerId}" />
+							</p:column>
+							
+							<p:column headerText="is Deleted">
+								<h:outputText value="#{markers.isDeleted}" />
+							</p:column>
+							
+							<p:column headerText="Modified_utc_timestamp">
+								<h:outputText value="#{markers.modifiedTimestamp}" />
+							</p:column>
+							<p:column headerText="JSON String">
+								<h:outputText value="#{markers}" />
+							</p:column>
+
+						</p:dataTable>
+						
+						<br></br> <br></br>
+						<p:dataTable var="items" value="#{userSearcher.result.roUserItems}">
+							<f:facet name="header">  
+            					Items
+        					</f:facet>
+							<p:column headerText="Item Id">
+								<h:outputText value="#{items.itemId}" />
+							</p:column>
+							
+							<p:column headerText="correlation_id">
+								<h:outputText value="#{items.correlationId}" />
+							</p:column>
+							
+							<p:column headerText="name">
+								<h:outputText value="#{items.name}" />
+							</p:column>
+							
+							<p:column headerText="modified_utc_timestamp">
+								<h:outputText value="#{items.modifiedTimestamp}" />
+							</p:column>
+							
+							<p:column headerText="is_deleted">
+								<h:outputText value="#{items.isDeleted}" />
+							</p:column>
+
+							<p:column headerText="JSON String">
+								<h:outputText value="#{items}" />
+							</p:column>
+
+						</p:dataTable>
+						
+						<br></br> <br></br>
+						<p:dataTable var="r" value="#{userSearcher.result.activeReceipts}">
+							<f:facet name="header">  
+            					activeReceipts
+        					</f:facet>
+        					
+        					<p:column headerText="receipt id">
+								<h:outputText value="#{r.receiptId}" />
+							</p:column>
+							
+							<p:column headerText="offerCode">
+								<h:outputText value="#{r.offerCode}" />
+							</p:column>
+							
+							<p:column headerText="sku">
+								<h:outputText value="#{r.offerCode}" />
+							</p:column>
+							
+							<p:column headerText="payment_processor">
+								<h:outputText value="#{r.paymentProcessor}" />
+							</p:column>
+							
+							<p:column headerText="purchase_utc_timestamp">
+								<h:outputText value="#{r.purchaseTimestamp}" />
+							</p:column>
+							
+							<p:column headerText="offer_expiry_utc_timestamp">
+								<h:outputText value="#{r.offerExpiryTimestamp}" />
+							</p:column>
+        					
+							<p:column headerText="JSON String">
+								<h:outputText value="#{r}" />
+							</p:column>
+							
+							
+
+						</p:dataTable>
+						
+						<br></br> <br></br>
+						<p:dataTable var="r" value="#{userSearcher.result.archivedReceipts}">
+							<f:facet name="header">  
+            					archived Receipts
+        					</f:facet>
+        					
+        					<p:column headerText="receipt id">
+								<h:outputText value="#{r.receiptId}" />
+							</p:column>
+							
+							<p:column headerText="offerCode">
+								<h:outputText value="#{r.offerCode}" />
+							</p:column>
+							
+							<p:column headerText="sku">
+								<h:outputText value="#{r.offerCode}" />
+							</p:column>
+							
+							<p:column headerText="payment_processor">
+								<h:outputText value="#{r.paymentProcessor}" />
+							</p:column>
+							
+							<p:column headerText="purchase_utc_timestamp">
+								<h:outputText value="#{r.purchaseTimestamp}" />
+							</p:column>
+							
+							<p:column headerText="offer_expiry_utc_timestamp">
+								<h:outputText value="#{r.offerExpiryTimestamp}" />
+							</p:column>
+        					
+							<p:column headerText="JSON String">
+								<h:outputText value="#{r}" />
+							</p:column>
+							
+							
+
+						</p:dataTable>
+				
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Footer -->
+		<div id="footer">
+			<ul>
+				<li>© 2013 TeleNav, Inc. All rights reserved.</li>
+			</ul>
+		</div>
+
+		<!-- end of footer -->
+	</div>
 
 </h:body>
 </html>

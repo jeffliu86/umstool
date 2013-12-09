@@ -321,7 +321,7 @@ public class CassandraMarkerDao extends CassandraDao implements MarkerDao {
 
 		final LogContext logContext = LOG.enter("CassandraMarkerDao.ListSystemMarkers: ");
 
-		Collection<RoMarker> returnValue = null;
+		Collection<RoMarker> returnValue = new LinkedList<RoMarker>();
 
 		if (ALL_SYSTEM_MARKERS_CACHE == null) {
 
@@ -345,6 +345,8 @@ public class CassandraMarkerDao extends CassandraDao implements MarkerDao {
 
 			returnValue = markers;
 			ALL_SYSTEM_MARKERS_CACHE = returnValue;
+		}else{
+			return ALL_SYSTEM_MARKERS_CACHE;
 		}
 
 		LOG.exit(logContext, "CassandraMarkerDao.ListSystemMarkers: %s", returnValue);

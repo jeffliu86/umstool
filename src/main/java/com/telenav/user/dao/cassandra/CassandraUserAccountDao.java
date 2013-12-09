@@ -171,6 +171,39 @@ public class CassandraUserAccountDao extends CassandraDao implements UserAccount
 
 		return returnValue;
 	}
+	
+	
+	public RoUserRegistrationData getRegistrationData(final String userId) throws DataAccessException {
+
+		final LogContext logContext = LOG.enter("CassandraUserAccountDao.getRegistrationData: userId: %s", userId);
+
+		RoUserRegistrationData returnValue = null;
+
+		try {
+			final String keyLookup = userId;
+			final String columnLookup = KEY_COLUMN_USER_REGISTRATION_DATA;
+
+			final ColumnFamilyQuery<String, String> query = this.keyspace.prepareQuery(CF_USER_ACCOUNT);
+			final RowQuery<String, String> rowKey = query.getKey(keyLookup);
+			final ColumnQuery<String> columnKey = rowKey.getColumn(columnLookup);
+			final OperationResult<Column<String>> executeResult = columnKey.execute();
+
+			final Column<String> migrationStateColumn = executeResult.getResult();
+			final String migrationStateJson = migrationStateColumn.getStringValue();
+
+			returnValue = RoUserRegistrationData.buildFromJson(migrationStateJson);
+		}
+		catch (final NotFoundException e) {
+			// Silencing the exception, because it is OK to not have any data
+		}
+		catch (final ConnectionException e) {
+			throw new DataAccessException(e);
+		}
+
+		LOG.exit(logContext, "CassandraUserAccountDao.getRegistrationData: %s", returnValue);
+
+		return returnValue;
+	}
 
 	@Override
 	public Boolean mergeLegacyUserId(final String fromUserId, final String toUserId) throws DataAccessException {

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.telenav.user.search;
+package com.telenav.user.tool.service;
 
 
 /**
