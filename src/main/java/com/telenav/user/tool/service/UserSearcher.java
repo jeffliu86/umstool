@@ -3,8 +3,14 @@
  */
 package com.telenav.user.tool.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+
+import com.telenav.user.resource.RoUserProfile;
 
 /**
  * @author [Liu Jie]
@@ -14,7 +20,7 @@ import javax.faces.bean.RequestScoped;
  * $LastChangedBy$
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class UserSearcher {
 
     private static String[] availableKeyWordTypes =
@@ -25,6 +31,8 @@ public class UserSearcher {
     private String keyWord;
 
     private UserSearchResult result;
+    
+    private Collection<RoUserProfile> profiles=new ArrayList<>();
     
     //todo: refactor this to singleton
     private UserSearchService service = new  UserSearchServiceImpl();
@@ -53,10 +61,19 @@ public class UserSearcher {
         return availableKeyWordTypes;
     }
 
-    public  String searchUser() {
+    public  void searchUser() {
         this.result = service.searchUser(keyWord);
-        return "index";
+        profiles=this.result.getRoUserProfiles();
+       
     }
+
+	public Collection<RoUserProfile> getProfiles() {
+		return profiles;
+	}
+
+	public void setProfiles(Collection<RoUserProfile> profiles) {
+		this.profiles = profiles;
+	}
 
     
 }

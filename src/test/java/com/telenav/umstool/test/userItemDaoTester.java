@@ -3,6 +3,7 @@ package com.telenav.umstool.test;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,11 +11,12 @@ import org.junit.Test;
 import com.telenav.user.dao.UserProfileDao;
 import com.telenav.user.dao.cassandra.CassandraUserAccountDao;
 import com.telenav.user.dao.cassandra.CassandraUserDaoFactory;
-import com.telenav.user.model.UmTelenavReceiptsCollection;
 import com.telenav.user.resource.RoMarker;
 import com.telenav.user.resource.RoTelenavReceipt;
 import com.telenav.user.resource.RoUserItem;
 import com.telenav.user.resource.RoUserProfile;
+import com.telenav.user.tool.service.Car;
+import com.telenav.user.tool.service.TableBean;
 
 public class userItemDaoTester {
     CassandraUserDaoFactory daoFactory=new CassandraUserDaoFactory();
@@ -83,6 +85,12 @@ public class userItemDaoTester {
 		for (RoUserItem roUserItem : results) {
 			System.out.println(roUserItem.getAllMarksName());			
 		}
+	}
+	
+	@Test
+	public void somethingTester(){
+		TableBean tb=new TableBean();
+		List<Car> results= tb.getCarsSmall();
 	}
 
 }

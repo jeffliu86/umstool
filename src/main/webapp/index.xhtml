@@ -77,216 +77,272 @@
 				<div class="top-page-div">
 					<div id="act_list_wrapper" class="dataTables_wrapper" role="grid">
 						<div class="top"></div>
-						
-						<label>Sample key: 8QGE4S4RRJQ13MPJ3U7P335LV</label>
-						
-						<br></br>
+
+						<label>Search key:</label>
 						<h:outputText value="#{userSearcher.keyWord}"
-									rendered="#{not empty userSearcher.keyWord}" />
+							rendered="#{not empty userSearcher.keyWord}" />
 						<br></br>
-						<p:dataTable var="user" value="#{userSearcher.result.roUserRegistrationData}">
+
+						<p:dataTable id="userTable" var="user"
+							value="#{userSearcher.result.roUserRegistrationData}">
 							<f:facet name="header">  
             					User Account
         					</f:facet>
-        					<p:column headerText="First Name">
+        					
+        					<p:column style="width:2%">
+								<p:rowToggler />
+							</p:column>
+        					
+							<p:column headerText="First Name">
 								<h:outputText value="#{user.firstName}" />
 							</p:column>
 							<p:column headerText="Last Name">
 								<h:outputText value="#{user.lastName}" />
 							</p:column>
-							
+
 							<p:column headerText="isLegacyUser">
-								<h:outputText value="#{userSearcher.result.roUserMigrationState.isLegacyUser}" />
+								<h:outputText
+									value="#{userSearcher.result.roUserMigrationState.isLegacyUser}" />
 							</p:column>
 							<p:column headerText="Legacy userId">
-								<h:outputText value="#{userSearcher.result.roUserMigrationState.legacyUserId}" />
-							</p:column>
-							
-							<p:column headerText="Register Timestamp">
-								<h:outputText value="#{user.registeredTimestamp}" />
-							</p:column>
-        					
-							<p:column headerText="Registration Info JSON String">
-								<h:outputText value="#{user}" />
-							</p:column>
-							
-							<p:column headerText="MigrationState Info JSON String">
-								<h:outputText value="#{userSearcher.result.roUserMigrationState}" />
+								<h:outputText
+									value="#{userSearcher.result.roUserMigrationState.legacyUserId}" />
 							</p:column>
 
+							<p:column headerText="Register Timestamp">
+								<h:outputText value="#{user.registeredTimestamp}" />
+							</p:column>					
+							
+							<p:rowExpansion>
+								<h:panelGrid id="display" columns="2" cellpadding="4"
+									style="width:300px;">
+									<h:outputText value="Registration JSON" />
+									<h:outputText value="#{user}" />
+									<h:outputText value="Migratration JSON" />
+									<h:outputText value="#{userSearcher.result.roUserMigrationState}" />
+								</h:panelGrid>
+							</p:rowExpansion>
+
 						</p:dataTable>
-						
+
 						<br></br> <br></br>
-						<p:dataTable var="profiles" value="#{userSearcher.result.roUserProfiles}">
+						<p:dataTable id="profileTable" var="profiles"
+							value="#{userSearcher.result.roUserProfiles}">
 							<f:facet name="header">  
             					User Profiles
         					</f:facet>
+							<p:column style="width:2%">
+								<p:rowToggler />
+							</p:column>
 							<p:column headerText="Key">
 								<h:outputText value="#{profiles.profileKey}" />
 							</p:column>
-							
+
 							<p:column headerText="Value">
 								<h:outputText value="#{profiles.profileValue}" />
 							</p:column>
-
-							<p:column headerText="JSON String">
-								<h:outputText value="#{profiles}" />
-							</p:column>
+											
+							<p:rowExpansion>
+								<h:panelGrid id="display" columns="2" cellpadding="4"
+									style="width:300px;">
+									<h:outputText value="JSON" />
+									<h:outputText value="#{profiles}" />
+								</h:panelGrid>
+							</p:rowExpansion>
 
 						</p:dataTable>
-						
+
 						<br></br> <br></br>
-						<p:dataTable var="credentials" value="#{userSearcher.result.roUserCredentials}">
+						<p:dataTable id="credentialTable" var="credentials"
+							value="#{userSearcher.result.roUserCredentials}">
 							<f:facet name="header">  
             					User Credential
         					</f:facet>
+        					<p:column style="width:2%">
+								<p:rowToggler />
+							</p:column>
 							<p:column headerText="Type">
 								<h:outputText value="#{credentials.type}" />
 							</p:column>
-							
+
 							<p:column headerText="Key">
 								<h:outputText value="#{credentials.key}" />
 							</p:column>
-
-							<p:column headerText="JSON String">
-								<h:outputText value="#{credentials}" />
-							</p:column>
-
+							
+							<p:rowExpansion>
+								<h:panelGrid id="display" columns="2" cellpadding="4"
+									style="width:300px;">
+									<h:outputText value="JSON" />
+									<h:outputText value="#{credentials}" />
+								</h:panelGrid>
+							</p:rowExpansion>
+							
 						</p:dataTable>
-						
+
 						<br></br> <br></br>
-						<p:dataTable var="markers" value="#{userSearcher.result.roMarkers}">
+						<p:dataTable id="markerTable" var="markers"
+							value="#{userSearcher.result.roMarkers}">
 							<f:facet name="header">  
             					Markers
         					</f:facet>
-
+							<p:column style="width:2%">
+								<p:rowToggler />
+							</p:column>
 							<p:column headerText="Label">
 								<h:outputText value="#{markers.label}" />
 							</p:column>
-							
+
 							<p:column headerText="Mark Id">
 								<h:outputText value="#{markers.markerId}" />
 							</p:column>
-							
+
 							<p:column headerText="is Deleted">
 								<h:outputText value="#{markers.isDeleted}" />
 							</p:column>
-							
+
 							<p:column headerText="Modified_utc_timestamp">
 								<h:outputText value="#{markers.modifiedTimestamp}" />
-							</p:column>
-							<p:column headerText="JSON String">
-								<h:outputText value="#{markers}" />
-							</p:column>
+							</p:column>							
+							
+							<p:rowExpansion>
+								<h:panelGrid id="display" columns="2" cellpadding="4"
+									style="width:300px;">
+									<h:outputText value="JSON" />
+									<h:outputText value="#{markers}" />
+								</h:panelGrid>
+							</p:rowExpansion>
 
 						</p:dataTable>
-						
+
 						<br></br> <br></br>
-						<p:dataTable var="items" value="#{userSearcher.result.roUserItems}">
+
+						<p:dataTable id="itemTable" var="items" paginator="true" rows="20"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"  
+							
+							value="#{userSearcher.result.roUserItems}">
+
 							<f:facet name="header">  
             					Items
         					</f:facet>
+							<p:column style="width:2%">
+								<p:rowToggler />
+							</p:column>
 							<p:column headerText="Item Id">
 								<h:outputText value="#{items.itemId}" />
+							</p:column>							
+
+							<p:column headerText="name">
+								<h:outputText value="#{items.name}" />
 							</p:column>
 							
 							<p:column headerText="correlation_id">
 								<h:outputText value="#{items.correlationId}" />
 							</p:column>
-							
-							<p:column headerText="name">
-								<h:outputText value="#{items.name}" />
-							</p:column>
-							
+
 							<p:column headerText="modified_utc_timestamp">
 								<h:outputText value="#{items.modifiedTimestamp}" />
 							</p:column>
-							
+
 							<p:column headerText="is_deleted">
 								<h:outputText value="#{items.isDeleted}" />
 							</p:column>
 
-							<p:column headerText="JSON String">
-								<h:outputText value="#{items}" />
-							</p:column>
+							<p:rowExpansion>
+								<h:panelGrid id="display" columns="2" cellpadding="4"
+									style="width:300px;">
+									<h:outputText value="#{items}" />
+								</h:panelGrid>
+							</p:rowExpansion>
 
 						</p:dataTable>
-						
+
 						<br></br> <br></br>
-						<p:dataTable var="r" value="#{userSearcher.result.activeReceipts}">
+						<p:dataTable id="ReceiptTable1" var="r"
+							value="#{userSearcher.result.activeReceipts}">
 							<f:facet name="header">  
             					activeReceipts
         					</f:facet>
-        					
-        					<p:column headerText="receipt id">
+							<p:column style="width:2%">
+								<p:rowToggler />
+							</p:column>
+							<p:column headerText="receipt id">
 								<h:outputText value="#{r.receiptId}" />
 							</p:column>
-							
+
 							<p:column headerText="offerCode">
 								<h:outputText value="#{r.offerCode}" />
 							</p:column>
-							
+
 							<p:column headerText="sku">
 								<h:outputText value="#{r.offerCode}" />
 							</p:column>
-							
+
 							<p:column headerText="payment_processor">
 								<h:outputText value="#{r.paymentProcessor}" />
 							</p:column>
-							
+
 							<p:column headerText="purchase_utc_timestamp">
 								<h:outputText value="#{r.purchaseTimestamp}" />
 							</p:column>
-							
+
 							<p:column headerText="offer_expiry_utc_timestamp">
 								<h:outputText value="#{r.offerExpiryTimestamp}" />
-							</p:column>
-        					
-							<p:column headerText="JSON String">
-								<h:outputText value="#{r}" />
-							</p:column>
-							
-							
+							</p:column>							
+
+							<p:rowExpansion>
+								<h:panelGrid id="display" columns="2" cellpadding="4"
+									style="width:300px;">
+									<h:outputText value="JSON" />
+									<h:outputText value="#{r}" />
+								</h:panelGrid>
+							</p:rowExpansion>
 
 						</p:dataTable>
-						
+
 						<br></br> <br></br>
-						<p:dataTable var="r" value="#{userSearcher.result.archivedReceipts}">
+						<p:dataTable id="ReceiptTable2" var="r"
+							value="#{userSearcher.result.archivedReceipts}">
 							<f:facet name="header">  
             					archived Receipts
         					</f:facet>
-        					
-        					<p:column headerText="receipt id">
+							<p:column style="width:2%">
+								<p:rowToggler />
+							</p:column>
+							<p:column headerText="receipt id">
 								<h:outputText value="#{r.receiptId}" />
 							</p:column>
-							
+
 							<p:column headerText="offerCode">
 								<h:outputText value="#{r.offerCode}" />
 							</p:column>
-							
+
 							<p:column headerText="sku">
 								<h:outputText value="#{r.offerCode}" />
 							</p:column>
-							
+
 							<p:column headerText="payment_processor">
 								<h:outputText value="#{r.paymentProcessor}" />
 							</p:column>
-							
+
 							<p:column headerText="purchase_utc_timestamp">
 								<h:outputText value="#{r.purchaseTimestamp}" />
 							</p:column>
-							
+
 							<p:column headerText="offer_expiry_utc_timestamp">
 								<h:outputText value="#{r.offerExpiryTimestamp}" />
 							</p:column>
-        					
-							<p:column headerText="JSON String">
-								<h:outputText value="#{r}" />
-							</p:column>
-							
-							
+						
+							<p:rowExpansion>
+								<h:panelGrid id="display" columns="2" cellpadding="4"
+									style="width:300px;">
+									<h:outputText value="JSON" />
+									<h:outputText value="#{r}" />
+								</h:panelGrid>
+							</p:rowExpansion>
+
 
 						</p:dataTable>
+
 				
 						<div class="clear"></div>
 					</div>
