@@ -79,7 +79,7 @@
 						<div class="top"></div>
 
 						<label>Search key:</label>
-						<h:outputText value="#{userSearcher.keyWord}"
+						<h:outputText value="#{userSearcher.userId}"
 							rendered="#{not empty userSearcher.keyWord}" />
 						<br></br>
 
@@ -88,11 +88,11 @@
 							<f:facet name="header">  
             					User Account
         					</f:facet>
-        					
-        					<p:column style="width:2%">
+
+							<p:column style="width:2%">
 								<p:rowToggler />
 							</p:column>
-        					
+
 							<p:column headerText="First Name">
 								<h:outputText value="#{user.firstName}" />
 							</p:column>
@@ -109,17 +109,18 @@
 									value="#{userSearcher.result.roUserMigrationState.legacyUserId}" />
 							</p:column>
 
-							<p:column headerText="Register Timestamp">
-								<h:outputText value="#{user.registeredTimestamp}" />
-							</p:column>					
-							
+							<p:column headerText="Register Time">
+								<h:outputText value="#{user.registeredTimeDate}" />
+							</p:column>
+
 							<p:rowExpansion>
 								<h:panelGrid id="display" columns="2" cellpadding="4"
 									style="width:300px;">
 									<h:outputText value="Registration JSON" />
 									<h:outputText value="#{user}" />
 									<h:outputText value="Migratration JSON" />
-									<h:outputText value="#{userSearcher.result.roUserMigrationState}" />
+									<h:outputText
+										value="#{userSearcher.result.roUserMigrationState}" />
 								</h:panelGrid>
 							</p:rowExpansion>
 
@@ -134,14 +135,14 @@
 							<p:column style="width:2%">
 								<p:rowToggler />
 							</p:column>
-							<p:column headerText="Key">
+							<p:column sortBy="profileKey" headerText="Key">
 								<h:outputText value="#{profiles.profileKey}" />
 							</p:column>
 
-							<p:column headerText="Value">
+							<p:column sortBy="profileValue" headerText="Value">
 								<h:outputText value="#{profiles.profileValue}" />
 							</p:column>
-											
+
 							<p:rowExpansion>
 								<h:panelGrid id="display" columns="2" cellpadding="4"
 									style="width:300px;">
@@ -158,7 +159,7 @@
 							<f:facet name="header">  
             					User Credential
         					</f:facet>
-        					<p:column style="width:2%">
+							<p:column style="width:2%">
 								<p:rowToggler />
 							</p:column>
 							<p:column headerText="Type">
@@ -168,7 +169,7 @@
 							<p:column headerText="Key">
 								<h:outputText value="#{credentials.key}" />
 							</p:column>
-							
+
 							<p:rowExpansion>
 								<h:panelGrid id="display" columns="2" cellpadding="4"
 									style="width:300px;">
@@ -176,34 +177,35 @@
 									<h:outputText value="#{credentials}" />
 								</h:panelGrid>
 							</p:rowExpansion>
-							
+
 						</p:dataTable>
 
 						<br></br> <br></br>
 						<p:dataTable id="markerTable" var="markers"
 							value="#{userSearcher.result.roMarkers}">
 							<f:facet name="header">  
-            					Markers
+            					User Marker
         					</f:facet>
 							<p:column style="width:2%">
 								<p:rowToggler />
 							</p:column>
-							<p:column headerText="Label">
+							<p:column sortBy="label" headerText="Label">
 								<h:outputText value="#{markers.label}" />
 							</p:column>
 
-							<p:column headerText="Mark Id">
+							<p:column sortBy="markerId" headerText="Mark Id">
 								<h:outputText value="#{markers.markerId}" />
 							</p:column>
 
-							<p:column headerText="is Deleted">
+							<p:column sortBy="isDeleted" headerText="is Deleted">
 								<h:outputText value="#{markers.isDeleted}" />
 							</p:column>
 
-							<p:column headerText="Modified_utc_timestamp">
+							<p:column sortBy="modifiedTimestamp"
+								headerText="Modified_utc_timestamp">
 								<h:outputText value="#{markers.modifiedTimestamp}" />
-							</p:column>							
-							
+							</p:column>
+
 							<p:rowExpansion>
 								<h:panelGrid id="display" columns="2" cellpadding="4"
 									style="width:300px;">
@@ -217,8 +219,7 @@
 						<br></br> <br></br>
 
 						<p:dataTable id="itemTable" var="items" paginator="true" rows="20"
-							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"  
-							
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
 							value="#{userSearcher.result.roUserItems}">
 
 							<f:facet name="header">  
@@ -227,24 +228,21 @@
 							<p:column style="width:2%">
 								<p:rowToggler />
 							</p:column>
-							<p:column headerText="Item Id">
+							<p:column sortBy="itemId" headerText="Item Id">
 								<h:outputText value="#{items.itemId}" />
-							</p:column>							
+							</p:column>
 
-							<p:column headerText="name">
+							<p:column sortBy="name" headerText="name">
 								<h:outputText value="#{items.name}" />
 							</p:column>
-							
-							<p:column headerText="correlation_id">
+
+							<p:column sortBy="correlationId" headerText="correlation_id">
 								<h:outputText value="#{items.correlationId}" />
 							</p:column>
 
-							<p:column headerText="modified_utc_timestamp">
-								<h:outputText value="#{items.modifiedTimestamp}" />
-							</p:column>
-
-							<p:column headerText="is_deleted">
-								<h:outputText value="#{items.isDeleted}" />
+							<p:column sortBy="modifiedTimeDate"
+								headerText="modified_utc_timestamp">
+								<h:outputText value="#{items.modifiedTimeDate}" />
 							</p:column>
 
 							<p:rowExpansion>
@@ -265,29 +263,32 @@
 							<p:column style="width:2%">
 								<p:rowToggler />
 							</p:column>
-							<p:column headerText="receipt id">
+							<p:column sortBy="receiptId" headerText="receipt id">
 								<h:outputText value="#{r.receiptId}" />
 							</p:column>
 
-							<p:column headerText="offerCode">
+							<p:column sortBy="offerCode" headerText="offerCode">
 								<h:outputText value="#{r.offerCode}" />
 							</p:column>
 
-							<p:column headerText="sku">
-								<h:outputText value="#{r.offerCode}" />
+							<p:column sortBy="sku" headerText="sku">
+								<h:outputText value="#{r.sku}" />
 							</p:column>
 
-							<p:column headerText="payment_processor">
+							<p:column sortBy="paymentProcessor"
+								headerText="payment_processor">
 								<h:outputText value="#{r.paymentProcessor}" />
 							</p:column>
 
-							<p:column headerText="purchase_utc_timestamp">
-								<h:outputText value="#{r.purchaseTimestamp}" />
+							<p:column sortBy="purchaseTimeDate"
+								headerText="purchase_utc_timestamp">
+								<h:outputText value="#{r.purchaseTimeDate}" />
 							</p:column>
 
-							<p:column headerText="offer_expiry_utc_timestamp">
-								<h:outputText value="#{r.offerExpiryTimestamp}" />
-							</p:column>							
+							<p:column sortBy="offerExpiryTimeDate"
+								headerText="offer_expiry_utc_timestamp">
+								<h:outputText value="#{r.offerExpiryTimeDate}" />
+							</p:column>
 
 							<p:rowExpansion>
 								<h:panelGrid id="display" columns="2" cellpadding="4"
@@ -308,30 +309,33 @@
 							<p:column style="width:2%">
 								<p:rowToggler />
 							</p:column>
-							<p:column headerText="receipt id">
+							<p:column sortBy="receiptId" headerText="receipt id">
 								<h:outputText value="#{r.receiptId}" />
 							</p:column>
 
-							<p:column headerText="offerCode">
+							<p:column sortBy="offerCode" headerText="offerCode">
 								<h:outputText value="#{r.offerCode}" />
 							</p:column>
 
-							<p:column headerText="sku">
-								<h:outputText value="#{r.offerCode}" />
+							<p:column sortBy="sku" headerText="sku">
+								<h:outputText value="#{r.sku}" />
 							</p:column>
 
-							<p:column headerText="payment_processor">
+							<p:column sortBy="paymentProcessor"
+								headerText="payment_processor">
 								<h:outputText value="#{r.paymentProcessor}" />
 							</p:column>
 
-							<p:column headerText="purchase_utc_timestamp">
-								<h:outputText value="#{r.purchaseTimestamp}" />
+							<p:column sortBy="purchaseTimeDate"
+								headerText="purchase_utc_timestamp">
+								<h:outputText value="#{r.purchaseTimeDate}" />
 							</p:column>
 
-							<p:column headerText="offer_expiry_utc_timestamp">
-								<h:outputText value="#{r.offerExpiryTimestamp}" />
+							<p:column sortBy="offerExpiryTimeDate"
+								headerText="offer_expiry_utc_timestamp">
+								<h:outputText value="#{r.offerExpiryTimeDate}" />
 							</p:column>
-						
+
 							<p:rowExpansion>
 								<h:panelGrid id="display" columns="2" cellpadding="4"
 									style="width:300px;">
@@ -339,11 +343,9 @@
 									<h:outputText value="#{r}" />
 								</h:panelGrid>
 							</p:rowExpansion>
-
-
 						</p:dataTable>
 
-				
+
 						<div class="clear"></div>
 					</div>
 				</div>

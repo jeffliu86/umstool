@@ -1,6 +1,8 @@
 package com.telenav.user.resource;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -95,6 +97,14 @@ public class RoUserItem extends SyncableResourceObject {
 
 	public Long getModifiedTimestamp() {
 		return getAttributeAsLong(KEY_ITEM_UPDATE_TIMESTAMP);
+	}
+	
+	public String getModifiedTimeDate() {
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		
+		return df.format(
+				new Date(getModifiedTimestamp())
+				);
 	}
 
 	public void setModifiedTimestamp(final Long modifiedTimestamp) {

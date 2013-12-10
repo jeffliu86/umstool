@@ -11,6 +11,7 @@ import org.junit.Test;
 import com.telenav.user.dao.UserProfileDao;
 import com.telenav.user.dao.cassandra.CassandraUserAccountDao;
 import com.telenav.user.dao.cassandra.CassandraUserDaoFactory;
+import com.telenav.user.model.constant.EnumUserCredentialsType;
 import com.telenav.user.resource.RoMarker;
 import com.telenav.user.resource.RoTelenavReceipt;
 import com.telenav.user.resource.RoUserItem;
@@ -61,11 +62,11 @@ public class userItemDaoTester {
 	
 	@Test
 	public void testQueryUserRegistration(){
-		String key="8QGE4S4RRJQ13MPJ3U7P335LV";
+		String key="3FHS91E0BCQL8U34OM9RZZUX1";
 		 
 		CassandraUserAccountDao accountDao= (CassandraUserAccountDao)daoFactory.getUserAccountDao();
 		
-		System.out.println(accountDao.getRegistrationData(key));
+		System.out.println(accountDao.getRegistrationData(key).getRegisteredTimeDate());
 	}
 	
 	@Test
@@ -85,6 +86,14 @@ public class userItemDaoTester {
 		for (RoUserItem roUserItem : results) {
 			System.out.println(roUserItem.getAllMarksName());			
 		}
+	}
+	
+	@Test
+	public void userIdLookup(){
+		String key="C7BE15A9-10FF-4CBE-AF4C-D73E03C8D0F1JLZHANG@TELENAV.CN";
+		System.out.println(
+				daoFactory.getUserCredentialsDao().lookupUserId(EnumUserCredentialsType.TELENAV_SSO_TOKEN, key)
+				);
 	}
 	
 	@Test

@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import com.telenav.user.dao.UserProfileDao;
 import com.telenav.user.dao.cassandra.CassandraUserAccountDao;
 import com.telenav.user.dao.cassandra.CassandraUserDaoFactory;
+import com.telenav.user.model.constant.EnumUserCredentialsType;
 import com.telenav.user.resource.RoItemMark;
 import com.telenav.user.resource.RoUserProfile;
 import com.telenav.user.resource.RoUserRegistrationData;
@@ -86,5 +87,21 @@ public class UserSearchServiceImpl implements UserSearchService {
         
         return result;
     }
+
+	@Override
+	public String lookUpUserKey(String fieldType, String field) {
+		EnumUserCredentialsType cType;
+		
+		if(fieldType.equalsIgnoreCase(UserSearcher.TYPE_EMAIL)){
+			cType=EnumUserCredentialsType.EMAIL_PASSWORD;
+		}else if (fieldType.equalsIgnoreCase(UserSearcher.TYPE_FB_ID)) {
+			cType=EnumUserCredentialsType.FACEBOOK_ACCESS_TOKEN;
+		}else{
+			cType=EnumUserCredentialsType.GOOGLEPLUS_ACCESS_TOKEN;
+		}
+		return daoFactory.getUserCredentialsDao().lookupUserId(
+						cType, 
+						field);
+	}
 
 }
