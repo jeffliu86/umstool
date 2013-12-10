@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<div class="item-left" style="width: 70px;">Search By:</div>
+		<div class="item-left">
+			<h:selectOneMenu value="#{userSearcher.keyWordType}">
+				<f:selectItems value="#{userSearcher.availableKeyWordTypes}" />
+			</h:selectOneMenu>
+		</div>
+		<div class="item-left">
+			<h:inputText value="#{userSearcher.keyWord}" style="width:200px;" />
+		</div>
+		<h:commandButton styleClass="search" value="search"
+			action="#{userSearcher.searchUser}" />
+	</h:form>
+	<label>Sample key: 8QGE4S4RRJQ13MPJ3U7P335LV</label>
+	<br></br>
+	<br></br>
+	<p:dataTable var="mState"
+		value="#{userSearcher.result.roUserMigrationState}">
+		<f:facet name="header">  
+            					UserMigrationStat
+        					</f:facet>
+		<p:column headerText="UserId">
+			<h:outputText value="#{userSearcher.keyWord}" />
+		</p:column>
+
+		<p:column headerText="JSON String">
+			<h:outputText value="#{mState}" />
+		</p:column>
+
+	</p:dataTable>
+
+	<br></br>
+	<br></br>
+	<p:dataTable var="profiles"
+		value="#{userSearcher.result.roUserProfiles}">
+		<f:facet name="header">  
+            					UserProfiles
+        					</f:facet>
+		<p:column headerText="UserId">
+			<h:outputText value="#{userSearcher.keyWord}" />
+		</p:column>
+
+		<p:column headerText="JSON String">
+			<h:outputText value="#{profiles}" />
+		</p:column>
+
+	</p:dataTable>
+
+	<br></br>
+	<br></br>
+	<p:dataTable var="credentials"
+		value="#{userSearcher.result.roUserCredentials}">
+		<f:facet name="header">  
+            					UserCredential
+        					</f:facet>
+		<p:column headerText="UserId">
+			<h:outputText value="#{userSearcher.keyWord}" />
+		</p:column>
+
+		<p:column headerText="JSON String">
+			<h:outputText value="#{credentials}" />
+		</p:column>
+
+	</p:dataTable>
+
+	<br></br>
+	<br></br>
+	<p:dataTable var="markers" value="#{userSearcher.result.roMarkers}">
+		<f:facet name="header">  
+            					Markers
+        					</f:facet>
+		<p:column headerText="UserId">
+			<h:outputText value="#{userSearcher.keyWord}" />
+		</p:column>
+
+		<p:column headerText="JSON String">
+			<h:outputText value="#{markers}" />
+		</p:column>
+
+	</p:dataTable>
+
+</h:body>
+</html>

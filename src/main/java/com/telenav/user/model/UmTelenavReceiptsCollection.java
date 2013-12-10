@@ -1,6 +1,7 @@
 package com.telenav.user.model;
 
 import java.util.Collection;
+import java.util.LinkedList;
 
 import com.telenav.user.commons.ResponseCode;
 import com.telenav.user.commons.UserDataObject;
@@ -8,7 +9,7 @@ import com.telenav.user.resource.RoTelenavReceipt;
 
 public class UmTelenavReceiptsCollection extends UserModel {
 
-	private Collection<RoTelenavReceipt> receipts = null;
+	private Collection<RoTelenavReceipt> receipts = new LinkedList<>();
 
 	public UmTelenavReceiptsCollection(final ResponseCode responseCode, final String errorMessage) {
 		super(responseCode, errorMessage);

@@ -33,7 +33,7 @@ public class RoUserMigrationState extends ResourceObject {
 		setAttribute(KEY_USER_ID, userId);
 	}
 
-	public Boolean isLegacyUser() {
+	public boolean getIsLegacyUser() {
 		return getAttributeAsBoolean(KEY_IS_LEGACY_USER);
 	}
 

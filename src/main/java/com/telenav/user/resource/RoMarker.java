@@ -69,7 +69,7 @@ public class RoMarker extends SyncableResourceObject {
 		setAttribute(KEY_MODIFIED_TIMESTAMP, timestamp);
 	}
 
-	public Boolean isDeleted() {
+	public Boolean getIsDeleted() {
 		return getAttributeAsBoolean(KEY_IS_DELETED);
 	}
 

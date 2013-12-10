@@ -1,5 +1,8 @@
 package com.telenav.user.resource;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.telenav.user.commons.ResponseCode;
 import com.telenav.user.commons.UserDataObject;
 import com.telenav.user.commons.json.UserJsonObject;
@@ -92,6 +95,15 @@ public class RoUserRegistrationData extends ResourceObject {
 
 	public Long getRegisteredTimestamp() {
 		return getAttributeAsLong(KEY_REGISTERED_TIMESTAMP);
+	}
+	
+	public String getRegisteredTimeDate(){
+		
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		
+		return df.format(
+				new Date(getRegisteredTimestamp())
+				);
 	}
 
 	public void setRegisteredTimestamp(final Long timsetamp) {
