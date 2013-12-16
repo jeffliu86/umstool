@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 import com.telenav.user.commons.ResponseCode;
+import com.telenav.user.commons.UserConstants;
 import com.telenav.user.commons.UserDataObject;
 import com.telenav.user.commons.json.UserJsonArray;
 
@@ -104,7 +105,7 @@ public class RoUserItem extends SyncableResourceObject {
 		
 		return df.format(
 				new Date(getModifiedTimestamp())
-				);
+				)+" "+UserConstants.TIMEZONE;
 	}
 
 	public void setModifiedTimestamp(final Long modifiedTimestamp) {

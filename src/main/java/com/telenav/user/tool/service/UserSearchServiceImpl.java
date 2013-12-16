@@ -71,7 +71,7 @@ public class UserSearchServiceImpl implements UserSearchService {
         //4) Show user profiles(from user_profile) 
         result.setRoUserProfiles(daoFactory.getUserProfileDao().listAllProfiles(key));
         //5) Show user markers (from user_marker_lookup) 
-        result.setRoMarkers(daoFactory.getMarkerDao().ListAllMarkers(key));
+        result.setRoMarkers(daoFactory.getMarkerDao().ListUserMarkers(key));
         //6) Show user items and their markers like all the Favorites, Recent etc 
         result.setRoUserItems(daoFactory.getUserItemDao().listUserItems(key));
         //7) Show active receipt

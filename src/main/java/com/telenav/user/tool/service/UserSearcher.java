@@ -62,12 +62,22 @@ public class UserSearcher {
         return availableKeyWordTypes;
     }
 
-    public  void searchUser() {
+    public void searchUser() {
+    	if(keyWord==null||keyWord.trim().equals("")){
+    		this.result=new UserSearchResult();
+			return;
+    	}
+    	
+    	
     	userId=null;
     	if(keyWordType.endsWith(TYPE_USER_ID)){
     		userId=keyWord;    
     	}else{
-    		userId=service.lookUpUserKey(keyWordType, keyWord);    		
+    		userId=service.lookUpUserKey(keyWordType, keyWord);
+    		if(userId==null||userId.equals("")){
+    			this.result=new UserSearchResult();
+    			return;
+    		}
     	}
     	this.result=service.searchUser(userId.trim());
     }
