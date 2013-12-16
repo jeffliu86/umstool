@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.telenav.user.commons.ResponseCode;
+import com.telenav.user.commons.UserConstants;
 import com.telenav.user.commons.UserDataObject;
 import com.telenav.user.commons.json.UserJsonObject;
 
@@ -124,7 +125,7 @@ public class RoTelenavReceipt extends ResourceObject implements Comparable<RoTel
 		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		return df.format(
 				new Date(getPurchaseTimestamp())
-				);
+				)+" "+UserConstants.TIMEZONE;
 	}
 
 	public void setPurchaseTimestamp(final Long purchaseUTCTimestamp) {
@@ -141,7 +142,7 @@ public class RoTelenavReceipt extends ResourceObject implements Comparable<RoTel
 		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		return df.format(
 				new Date(getOfferExpiryTimestamp())
-				);
+				)+" "+UserConstants.TIMEZONE;
 	}
 	public void setOfferExpiryTimestamp(final Long offerExpiryTimestamp) {
 		setAttribute(OFFER_EXPIRY_UTC_TIMESTAMP, offerExpiryTimestamp);

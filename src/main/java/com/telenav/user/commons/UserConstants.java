@@ -1,6 +1,7 @@
 package com.telenav.user.commons;
 
 import java.nio.charset.Charset;
+import java.util.Locale;
 
 public final class UserConstants extends UserObject {
 
@@ -13,6 +14,7 @@ public final class UserConstants extends UserObject {
 
 	public static final String REQUEST_ATTRIBUTE_REQUESTBODY = "attribute_request_body";
 	public static final String REQUEST_ATTRIBUTE_SESSION = "attribute_request_session";
+	public static final String TIMEZONE=java.util.TimeZone.getDefault().getDisplayName(false, 0, Locale.ENGLISH);
 
 	public static Charset API_DEFAULT_CHARSET = Charset.forName("UTF8");
 

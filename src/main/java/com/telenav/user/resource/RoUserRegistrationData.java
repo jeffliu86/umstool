@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.telenav.user.commons.ResponseCode;
+import com.telenav.user.commons.UserConstants;
 import com.telenav.user.commons.UserDataObject;
 import com.telenav.user.commons.json.UserJsonObject;
 import com.telenav.user.model.constant.EnumUserCredentialsType;
@@ -103,7 +104,7 @@ public class RoUserRegistrationData extends ResourceObject {
 		
 		return df.format(
 				new Date(getRegisteredTimestamp())
-				);
+				)+" "+UserConstants.TIMEZONE;
 	}
 
 	public void setRegisteredTimestamp(final Long timsetamp) {

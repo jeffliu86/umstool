@@ -1,6 +1,10 @@
 package com.telenav.user.resource;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.telenav.user.commons.ResponseCode;
+import com.telenav.user.commons.UserConstants;
 import com.telenav.user.commons.UserDataObject;
 import com.telenav.user.model.constant.EnumMarkerType;
 
@@ -63,6 +67,14 @@ public class RoMarker extends SyncableResourceObject {
 
 	public Long getModifiedTimestamp() {
 		return getAttributeAsLong(KEY_MODIFIED_TIMESTAMP);
+	}
+	
+	public String getModifiedTimeDate() {
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		
+		return df.format(
+				new Date(getModifiedTimestamp())
+				)+" "+UserConstants.TIMEZONE;
 	}
 
 	public void setModifiedTimestamp(final Long timestamp) {

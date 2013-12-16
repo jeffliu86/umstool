@@ -24,6 +24,20 @@
 	<link rel="stylesheet" type="text/css"
 		href="./resources/css/ui.admenu.css" />
 	<link href="./css/table-styles.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 12px;
+}
+
+.columnFont
+{
+   font-size: 12px;
+   overflow:hidden;
+   text-overflow:ellipsis;
+}
+
+    </style>
 </h:head>
 
 
@@ -58,17 +72,15 @@
 				<div class="search-bar">
 
 					<h:form>
-						<div class="item-left" style="width: 70px;">Search By:</div>
-						<div class="item-left">
-							<h:selectOneMenu value="#{userSearcher.keyWordType}">
+						<h:panelGrid id="display" columns="4" style="font-size:10px">
+							<h:outputLabel value="Search By: "/>
+							<p:selectOneMenu value="#{userSearcher.keyWordType}">
 								<f:selectItems value="#{userSearcher.availableKeyWordTypes}" />
-							</h:selectOneMenu>
-						</div>
-						<div class="item-left">
-							<h:inputText value="#{userSearcher.keyWord}" style="width:200px;" />
-						</div>
-						<h:commandButton styleClass="search" value="search"
-							action="#{userSearcher.searchUser}" />
+							</p:selectOneMenu>
+							<p:inputText value="#{userSearcher.keyWord}" style="width:400px;" />
+							<p:commandButton value="search"
+								actionListener="#{userSearcher.searchUser}" ajax="false"/>
+						</h:panelGrid>						
 					</h:form>
 
 					<div class="clear"></div>
@@ -77,50 +89,51 @@
 				<div class="top-page-div">
 					<div id="act_list_wrapper" class="dataTables_wrapper" role="grid">
 						<div class="top"></div>
-
-						<label>Search key:</label>
-						<h:outputText value="#{userSearcher.userId}"
-							rendered="#{not empty userSearcher.keyWord}" />
+						<h:panelGrid id="display" columns="2">
+							<p:outputLabel value="User Id:" /> 
+							<p:outputLabel value="#{userSearcher.userId}"
+								rendered="#{not empty userSearcher.keyWord}" />
+						</h:panelGrid>
+						
 						<br></br>
 
 						<p:dataTable id="userTable" var="user"
-							value="#{userSearcher.result.roUserRegistrationData}">
+							value="#{userSearcher.result.roUserRegistrationData}"
+							resizableColumns="true">
 							<f:facet name="header">  
             					User Account
         					</f:facet>
 
-							<p:column style="width:2%">
+							<p:column style="width:10">
 								<p:rowToggler />
 							</p:column>
 
-							<p:column headerText="First Name">
+							<p:column styleClass="columnFont" headerText="First Name">
 								<h:outputText value="#{user.firstName}" />
 							</p:column>
-							<p:column headerText="Last Name">
+							<p:column styleClass="columnFont" headerText="Last Name">
 								<h:outputText value="#{user.lastName}" />
 							</p:column>
 
-							<p:column headerText="isLegacyUser">
+							<p:column styleClass="columnFont" headerText="isLegacyUser">
 								<h:outputText
 									value="#{userSearcher.result.roUserMigrationState.isLegacyUser}" />
 							</p:column>
-							<p:column headerText="Legacy userId">
+							<p:column styleClass="columnFont" headerText="Legacy UserId">
 								<h:outputText
 									value="#{userSearcher.result.roUserMigrationState.legacyUserId}" />
 							</p:column>
 
-							<p:column headerText="Register Time">
+							<p:column styleClass="columnFont" headerText="Register Time">
 								<h:outputText value="#{user.registeredTimeDate}" />
 							</p:column>
 
 							<p:rowExpansion>
-								<h:panelGrid id="display" columns="2" cellpadding="4"
-									style="width:300px;">
-									<h:outputText value="Registration JSON" />
-									<h:outputText value="#{user}" />
-									<h:outputText value="Migratration JSON" />
-									<h:outputText
-										value="#{userSearcher.result.roUserMigrationState}" />
+								<h:panelGrid id="display" columns="1">
+									<p:outputLabel value="Registration JSON" />
+									<p:inputTextarea value="#{user}" readonly="true" cols="170"/>
+									<p:outputLabel value="Migratration JSON" />
+									<p:inputTextarea value="#{userSearcher.result.roUserMigrationState}" readonly="true" cols="170"/>
 								</h:panelGrid>
 							</p:rowExpansion>
 
@@ -128,26 +141,26 @@
 
 						<br></br> <br></br>
 						<p:dataTable id="profileTable" var="profiles"
-							value="#{userSearcher.result.roUserProfiles}">
+							value="#{userSearcher.result.roUserProfiles}"
+							resizableColumns="true">
 							<f:facet name="header">  
             					User Profiles
         					</f:facet>
-							<p:column style="width:2%">
+							<p:column style="width:10">
 								<p:rowToggler />
 							</p:column>
-							<p:column sortBy="profileKey" headerText="Key">
+							<p:column styleClass="columnFont" sortBy="profileKey" headerText="Key">
 								<h:outputText value="#{profiles.profileKey}" />
 							</p:column>
 
-							<p:column sortBy="profileValue" headerText="Value">
+							<p:column styleClass="columnFont" sortBy="profileValue" headerText="Value">
 								<h:outputText value="#{profiles.profileValue}" />
 							</p:column>
 
 							<p:rowExpansion>
-								<h:panelGrid id="display" columns="2" cellpadding="4"
-									style="width:300px;">
-									<h:outputText value="JSON" />
-									<h:outputText value="#{profiles}" />
+								<h:panelGrid id="display" columns="1">
+									<p:outputLabel value="JSON" />
+									<p:inputTextarea value="#{profiles}" readonly="true" cols="170"/>
 								</h:panelGrid>
 							</p:rowExpansion>
 
@@ -155,26 +168,26 @@
 
 						<br></br> <br></br>
 						<p:dataTable id="credentialTable" var="credentials"
-							value="#{userSearcher.result.roUserCredentials}">
+							value="#{userSearcher.result.roUserCredentials}"
+							resizableColumns="true">
 							<f:facet name="header">  
             					User Credential
         					</f:facet>
-							<p:column style="width:2%">
+							<p:column style="width:10">
 								<p:rowToggler />
 							</p:column>
-							<p:column headerText="Type">
+							<p:column styleClass="columnFont" sortBy="type" headerText="Type">
 								<h:outputText value="#{credentials.type}" />
 							</p:column>
 
-							<p:column headerText="Key">
+							<p:column styleClass="columnFont" sortBy="key" headerText="Key">
 								<h:outputText value="#{credentials.key}" />
 							</p:column>
 
 							<p:rowExpansion>
-								<h:panelGrid id="display" columns="2" cellpadding="4"
-									style="width:300px;">
-									<h:outputText value="JSON" />
-									<h:outputText value="#{credentials}" />
+								<h:panelGrid id="display" columns="1">
+									<p:outputLabel value="JSON" />
+									<p:inputTextarea value="#{credentials}" readonly="true" cols="170"/>
 								</h:panelGrid>
 							</p:rowExpansion>
 
@@ -182,35 +195,35 @@
 
 						<br></br> <br></br>
 						<p:dataTable id="markerTable" var="markers"
-							value="#{userSearcher.result.roMarkers}">
+							value="#{userSearcher.result.roMarkers}"
+							resizableColumns="true">
 							<f:facet name="header">  
             					User Marker
         					</f:facet>
-							<p:column style="width:2%">
+							<p:column style="width:10">
 								<p:rowToggler />
 							</p:column>
-							<p:column sortBy="label" headerText="Label">
+							<p:column styleClass="columnFont" sortBy="label" headerText="Label">
 								<h:outputText value="#{markers.label}" />
 							</p:column>
 
-							<p:column sortBy="markerId" headerText="Mark Id">
+							<p:column styleClass="columnFont" sortBy="markerId" headerText="Mark Id">
 								<h:outputText value="#{markers.markerId}" />
 							</p:column>
 
-							<p:column sortBy="isDeleted" headerText="is Deleted">
+							<p:column styleClass="columnFont" sortBy="isDeleted" headerText="is Deleted">
 								<h:outputText value="#{markers.isDeleted}" />
 							</p:column>
 
-							<p:column sortBy="modifiedTimestamp"
-								headerText="Modified_utc_timestamp">
-								<h:outputText value="#{markers.modifiedTimestamp}" />
+							<p:column styleClass="columnFont" sortBy="modifiedTimestamp"
+								headerText="Modified Time">
+								<h:outputText value="#{markers.modifiedTimeDate}" />
 							</p:column>
 
 							<p:rowExpansion>
-								<h:panelGrid id="display" columns="2" cellpadding="4"
-									style="width:300px;">
-									<h:outputText value="JSON" />
-									<h:outputText value="#{markers}" />
+								<h:panelGrid id="display" columns="1">
+									<p:outputLabel value="JSON" />
+									<p:inputTextarea value="#{markers}" readonly="true" cols="170"/>
 								</h:panelGrid>
 							</p:rowExpansion>
 
@@ -218,37 +231,47 @@
 
 						<br></br> <br></br>
 
-						<p:dataTable id="itemTable" var="items" paginator="true" rows="20"
+						<p:dataTable id="itemTable" var="items" 
+							paginator="true" 
+							rows="20"
 							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-							value="#{userSearcher.result.roUserItems}">
+							value="#{userSearcher.result.roUserItems}"
+							resizableColumns="true">
 
 							<f:facet name="header">  
             					Items
         					</f:facet>
-							<p:column style="width:2%">
+							<p:column style="width:10">
 								<p:rowToggler />
 							</p:column>
-							<p:column sortBy="itemId" headerText="Item Id">
+							<p:column styleClass="columnFont" sortBy="itemId" headerText="Item Id">
 								<h:outputText value="#{items.itemId}" />
 							</p:column>
 
-							<p:column sortBy="name" headerText="name">
+							<p:column styleClass="columnFont" sortBy="name" headerText="Name">
 								<h:outputText value="#{items.name}" />
 							</p:column>
+							
+							<p:column styleClass="columnFont" sortBy="name" headerText="Markers">
+								<h:outputText value="" />
+							</p:column>
 
-							<p:column sortBy="correlationId" headerText="correlation_id">
+							<p:column headerText="Correlation Id" 
+									styleClass="columnFont" 
+									width="30%" 
+									sortBy="correlationId" >
 								<h:outputText value="#{items.correlationId}" />
 							</p:column>
 
-							<p:column sortBy="modifiedTimeDate"
-								headerText="modified_utc_timestamp">
+							<p:column styleClass="columnFont" sortBy="modifiedTimeDate"
+								headerText="Modified Time">						
 								<h:outputText value="#{items.modifiedTimeDate}" />
 							</p:column>
 
 							<p:rowExpansion>
-								<h:panelGrid id="display" columns="2" cellpadding="4"
-									style="width:300px;">
-									<h:outputText value="#{items}" />
+								<h:panelGrid id="display" columns="1">
+									<p:outputLabel value="JSON" />
+									<p:inputTextarea value="#{items}" readonly="true" cols="170"/>
 								</h:panelGrid>
 							</p:rowExpansion>
 
@@ -256,45 +279,45 @@
 
 						<br></br> <br></br>
 						<p:dataTable id="ReceiptTable1" var="r"
-							value="#{userSearcher.result.activeReceipts}">
+							value="#{userSearcher.result.activeReceipts}"
+							resizableColumns="true">
 							<f:facet name="header">  
             					activeReceipts
         					</f:facet>
-							<p:column style="width:2%">
+							<p:column style="width:10">
 								<p:rowToggler />
 							</p:column>
-							<p:column sortBy="receiptId" headerText="receipt id">
+							<p:column styleClass="columnFont" sortBy="receiptId" headerText="Receipt Id">
 								<h:outputText value="#{r.receiptId}" />
 							</p:column>
 
-							<p:column sortBy="offerCode" headerText="offerCode">
+							<p:column styleClass="columnFont" sortBy="offerCode" headerText="Offer Code">
 								<h:outputText value="#{r.offerCode}" />
 							</p:column>
 
-							<p:column sortBy="sku" headerText="sku">
+							<p:column styleClass="columnFont" sortBy="sku" style="width:200" headerText="Sku">
 								<h:outputText value="#{r.sku}" />
 							</p:column>
 
-							<p:column sortBy="paymentProcessor"
-								headerText="payment_processor">
+							<p:column styleClass="columnFont" sortBy="paymentProcessor"
+								headerText="Payment Processor">
 								<h:outputText value="#{r.paymentProcessor}" />
 							</p:column>
 
-							<p:column sortBy="purchaseTimeDate"
-								headerText="purchase_utc_timestamp">
+							<p:column styleClass="columnFont" sortBy="purchaseTimeDate"
+								headerText="Purchase Time">
 								<h:outputText value="#{r.purchaseTimeDate}" />
 							</p:column>
 
-							<p:column sortBy="offerExpiryTimeDate"
-								headerText="offer_expiry_utc_timestamp">
+							<p:column styleClass="columnFont" sortBy="offerExpiryTimeDate"
+								headerText="Offer Expiry Time">
 								<h:outputText value="#{r.offerExpiryTimeDate}" />
 							</p:column>
 
 							<p:rowExpansion>
-								<h:panelGrid id="display" columns="2" cellpadding="4"
-									style="width:300px;">
-									<h:outputText value="JSON" />
-									<h:outputText value="#{r}" />
+								<h:panelGrid id="display" columns="1">
+									<p:outputLabel value="JSON" />
+									<p:inputTextarea value="#{r}" readonly="true" cols="170"/>
 								</h:panelGrid>
 							</p:rowExpansion>
 
@@ -302,45 +325,45 @@
 
 						<br></br> <br></br>
 						<p:dataTable id="ReceiptTable2" var="r"
-							value="#{userSearcher.result.archivedReceipts}">
+							value="#{userSearcher.result.archivedReceipts}"
+							resizableColumns="true">
 							<f:facet name="header">  
             					archived Receipts
         					</f:facet>
-							<p:column style="width:2%">
+							<p:column style="width:10">
 								<p:rowToggler />
 							</p:column>
-							<p:column sortBy="receiptId" headerText="receipt id">
+							<p:column styleClass="columnFont" sortBy="receiptId" headerText="Receipt Id">
 								<h:outputText value="#{r.receiptId}" />
 							</p:column>
 
-							<p:column sortBy="offerCode" headerText="offerCode">
+							<p:column styleClass="columnFont" sortBy="offerCode" headerText="Offer Code">
 								<h:outputText value="#{r.offerCode}" />
 							</p:column>
 
-							<p:column sortBy="sku" headerText="sku">
+							<p:column styleClass="columnFont" sortBy="sku" headerText="Sku">
 								<h:outputText value="#{r.sku}" />
 							</p:column>
 
-							<p:column sortBy="paymentProcessor"
-								headerText="payment_processor">
+							<p:column styleClass="columnFont" sortBy="paymentProcessor"
+								headerText="Payment Processor">
 								<h:outputText value="#{r.paymentProcessor}" />
 							</p:column>
 
-							<p:column sortBy="purchaseTimeDate"
-								headerText="purchase_utc_timestamp">
+							<p:column styleClass="columnFont" sortBy="purchaseTimeDate"
+								headerText="Purchase Time">
 								<h:outputText value="#{r.purchaseTimeDate}" />
 							</p:column>
 
-							<p:column sortBy="offerExpiryTimeDate"
-								headerText="offer_expiry_utc_timestamp">
+							<p:column styleClass="columnFont" sortBy="offerExpiryTimeDate"
+								headerText="Offer Expiry Time">
 								<h:outputText value="#{r.offerExpiryTimeDate}" />
 							</p:column>
 
 							<p:rowExpansion>
-								<h:panelGrid id="display" columns="2" cellpadding="4"
-									style="width:300px;">
-									<h:outputText value="JSON" />
-									<h:outputText value="#{r}" />
+								<h:panelGrid id="display" columns="1">
+									<p:outputLabel value="JSON" />
+									<p:inputTextarea value="#{r}" readonly="true" cols="170"/>
 								</h:panelGrid>
 							</p:rowExpansion>
 						</p:dataTable>

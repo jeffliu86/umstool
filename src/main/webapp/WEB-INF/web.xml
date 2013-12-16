@@ -15,7 +15,7 @@
   </servlet-mapping>
   <context-param>
     <param-name>javax.faces.PROJECT_STAGE</param-name>
-    <param-value>Development</param-value>
+    <param-value>Production</param-value>
   </context-param>
   <welcome-file-list>
     <welcome-file>index.jsf</welcome-file>

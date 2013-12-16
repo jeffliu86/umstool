@@ -3,7 +3,7 @@ package com.telenav.umstool.test;
 
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Locale;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,8 +16,6 @@ import com.telenav.user.resource.RoMarker;
 import com.telenav.user.resource.RoTelenavReceipt;
 import com.telenav.user.resource.RoUserItem;
 import com.telenav.user.resource.RoUserProfile;
-import com.telenav.user.tool.service.Car;
-import com.telenav.user.tool.service.TableBean;
 
 public class userItemDaoTester {
     CassandraUserDaoFactory daoFactory=new CassandraUserDaoFactory();
@@ -98,8 +96,11 @@ public class userItemDaoTester {
 	
 	@Test
 	public void somethingTester(){
-		TableBean tb=new TableBean();
-		List<Car> results= tb.getCarsSmall();
+		System.out.println(
+		java.util.TimeZone.getDefault().getDisplayName(false, 0, Locale.ENGLISH)
+		);
 	}
+	
+
 
 }
